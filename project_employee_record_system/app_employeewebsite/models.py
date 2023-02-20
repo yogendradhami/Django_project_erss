@@ -7,6 +7,9 @@ class Department(models.Model):
     short_name = models.CharField(max_length=255, null=True, blank=True)
     status = models.BooleanField(default=True)
 
+    def __str__(self):
+        return self.short_name
+
     class Meta:
         db_table = "app-department"
 
@@ -20,7 +23,7 @@ class Employee(models.Model):
     blood_group = models.CharField(max_length=255)
     address = models.CharField(max_length=255)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    dpartment = models.ForeignKey(Department,on_delete=models.CASCADE)
+    department = models.ForeignKey(Department,on_delete=models.CASCADE)
 
     class Meta:
         db_table = 'app_employee'
