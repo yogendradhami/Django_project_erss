@@ -11,11 +11,11 @@ class Department(models.Model):
         return self.short_name
 
     class Meta:
-        db_table = "app-department"
+        db_table = "app_department"
 
 class Employee(models.Model):
     full_name = models.CharField(max_length=255) 
-    contact  = models.CharField(max_length=255)
+    contact = models.CharField(max_length=255)
     email = models.EmailField()
     dob = models.DateField()
     join_date = models.DateField()
@@ -28,9 +28,12 @@ class Employee(models.Model):
     class Meta:
         db_table = 'app_employee'
 
+    def __str__(self):
+        return self.full_name
+
 class EmployeeAttendance(models.Model):
     status = models.BooleanField(default=True)
-    employee = models.ForeignKey(Employee , on_delete=models.CASCADE)
+    employee = models.ForeignKey(Employee, on_delete=models.CASCADE)
     atten_date = models.DateField()
     check_in_time = models.CharField(max_length=255)
     check_out_time = models.CharField(max_length=255)

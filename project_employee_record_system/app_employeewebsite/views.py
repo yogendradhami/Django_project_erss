@@ -1,11 +1,12 @@
 from django.shortcuts import render, redirect
 from .forms import EmployeeCreateForm
 from .models import Employee, User, Department
+
 # Create your views here.
 def employee_index(request):
     employee_list = Employee.objects.all()
     context = {"data": employee_list}
-    return render(request, 'employees/index_employee.html', context)
+    return render(request, 'employees/index_employee.html', context) # error showing here
 
 def employee_add(request):
     emp_create_form = EmployeeCreateForm()
@@ -13,10 +14,8 @@ def employee_add(request):
 
     if request.method == "POST":
         emp = Employee()
-
         user = User.objects.get(id=request.POST.get('user'))
         department = Department.objects.get(id=request.POST.get('department'))
-
 
         emp.full_name = request.POST.get('full_name')
         emp.address = request.POST['address'] # [''] is same as above .get('') we can write by both method
@@ -30,8 +29,6 @@ def employee_add(request):
         emp.department= department
         emp.save()
         return redirect('emp-index')
-
-
     return render(request, 'employees/add_employee.html', context)
 
 def employee_edit(request):
