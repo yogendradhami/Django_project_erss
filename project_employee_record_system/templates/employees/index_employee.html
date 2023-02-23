@@ -8,6 +8,7 @@
 <div class="container mt-5">
     <h1>This is employee list page</h1>
     <hr>
+    <a href="{% url 'emp-add' %}" class="btn btn-primary">Add</a>
     <table class="table table-striped-columns table-hover">
         <thead>
             <tr>
@@ -27,9 +28,9 @@
                 <td>{{ val.contact }}</td>
                 <td>{{ val.email }}</td>
                 <td>{{ val.department }}</td>
-                <td><a href="#">Edit</a></td>
-                <td><a href="#">Show</a></td>
-                <td><a href="#">Delete</a></td>
+                <td><a href="{% url 'emp-edit' val.id %}">Edit</a></td>
+                <td><a href="{% url 'emp-show' val.id %}">Show</a></td>
+                <td><a href="{% url 'emp-delete' val.id %}">Delete</a></td>
             </tr>
             {% endfor %}
         </tbody>
