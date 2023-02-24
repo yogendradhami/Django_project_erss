@@ -2,18 +2,19 @@
 
 {%  block title %}
     Employee - Details
-{% endblock%}
+{% endblock %}
 
-{% block content%}
+{% block content %}
 <div class="container mt-5">
     <h1>This is employee detail page</h1>
 <a href="{% url 'emp-index' %}" class="btn btn-primary">BACK</a>
 <hr>
 <div class="card">
-    <div class="card-header"><h3>{{ daya.full_name }}</h3></div>
+    <div class="card-header"><h3>{{ data.full_name }}</h3></div>
     <div class="ccard-body">
         <h6> {{ data.email }} </h6>
         <h6> {{ data.contact }} </h6>
+        <h6> {{ data.department }} </h6>
     </div>
 </div>
 </div>

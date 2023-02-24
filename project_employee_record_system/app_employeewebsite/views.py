@@ -67,7 +67,7 @@ def employee_update(request):
 def employee_show(request, id):
     data = Employee.objects.get(id=id)
     context = {"data":data}
-    return render(request, 'employees/show.employee.html', context)
+    return render(request, 'employees/show_employee.html', context)
 
 def employee_delete(request, id):
     data = Employee.objects.get(id=id)
