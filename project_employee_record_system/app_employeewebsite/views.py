@@ -62,6 +62,9 @@ def employee_update(request):
         emp.user = user
         emp.department= department
         emp.save()
+
+        messages.success(request, 'Employee details updated successfully')
+
         return redirect('emp-index')
    
 def employee_show(request, id):
@@ -72,4 +75,16 @@ def employee_show(request, id):
 def employee_delete(request, id):
     data = Employee.objects.get(id=id)
     data.delete()
+
+    messages.success(request, 'Employee deleted successfully')
+
     return redirect("emp-index")
+
+# def department_index(request):
+#     # department_list = Department.objects.all()
+#     # context ={"data":department_list}
+#     context= {
+#         'name':'yogendra',
+#         'address':'mnr'
+#     }
+#     return render(request, 'departments/index_department.html', context)

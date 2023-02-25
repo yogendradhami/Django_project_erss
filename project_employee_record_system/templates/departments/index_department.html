@@ -4,6 +4,21 @@
     deparment - List
 {% endblock%}
 
-{% block content%}
+{% block content %}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"/>
+{% endblock %}
+
+{% block content %}
+
+<div class="container mt-5">
+    {% include "partials/_message.html" %}
+</div>
+<div class="container mt-5">
+
     <h1>This is the department list page</h1>
-{% endblock%}
+</div>
+<hr>
+<h1>Name: {{ name }} </h1>
+<h1>Address: {{ address }} </h1>
+
+{% endblock %}
