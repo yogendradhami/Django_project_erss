@@ -2,13 +2,13 @@
 
 {% block title %}
     Employee - List
-{% endblock%}
+{% endblock %}
 
 {% block custom_css %}
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"/>
 {% endblock %}
 
-{% block content%}
+{% block content %}
 <div class="container mt-5">
 
     {% include "partials/_message.html" %}
@@ -25,6 +25,11 @@
                 <th>Name</th>
                 <th>Contact</th>
                 <th>Email</th>
+                <th>Dob</th>
+                <th>Join Date</th>
+                <th>Blood Group</th>
+                <th>Address</th>
+                <th>user</th>
                 <th>Department</th>
                 <th colspan="3">Action</th>
             </tr>
@@ -36,6 +41,11 @@
                 <td>{{ val.full_name }}</td>
                 <td>{{ val.contact }}</td>
                 <td>{{ val.email }}</td>
+                <td>{{ val.dob }}</td>
+                <td> {{ join_date }} </td>
+                <td> {{ val.blood_group }} </td>
+                <td> {{ val.address }} </td>
+                <td> {{ val.user }} </td>
                 <td>{{ val.department }}</td>
                 <td><a href="{% url 'emp-edit' val.id %}"><i class="fa-solid fa-pencil"></i></a></td>
                 <td><a href="{% url 'emp-show' val.id %}"><i class="fa-solid fa-eye"></i></a></td>

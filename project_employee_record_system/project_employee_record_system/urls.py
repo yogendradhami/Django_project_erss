@@ -21,4 +21,19 @@ urlpatterns = [
     path('employee/', include('app_employeewebsite.urls')),
     path('', include('app_employeewebsite.urls')), 
     # incase if need to load via base url
+    path('department/', include('app_employeewebsite.urls')),
+    path('', include('app_employeewebsite.urls')),
+    path('salary/', include('app_employeewebsite.urls')),
+    path('', include('app_employeewebsite.urls')),
 ]
+
+# urlpatterns = [
+#     path('department/', include('app_employeewebsite.urls')),
+#     path('', include('app_employeewebsite.urls')),
+
+# ]
+
+# urlpatterns = [
+#     path('salary/', include('app_employeewebsite.urls')),
+#     path('', include('app_employeewebsite.urls')),
+# ]

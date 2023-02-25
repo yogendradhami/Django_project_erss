@@ -4,15 +4,20 @@ from .models import Employee, User, Department
 from django.contrib import messages
 
 # Create your views here.
+
+# functions for employee section starts here
+
 def employee_index(request):
-    """Returns lsit of employee as context"""
+    """Returns list of employee as context"""
 
     employee_list = Employee.objects.all()
     context = {"data": employee_list}
     
     return render(request, 'employees/index_employee.html', context)
  
+
 def employee_add(request):
+    
     emp_create_form = EmployeeCreateForm()
     context = {"form": emp_create_form}
 
@@ -80,11 +85,22 @@ def employee_delete(request, id):
 
     return redirect("emp-index")
 
-# def department_index(request):
-#     # department_list = Department.objects.all()
-#     # context ={"data":department_list}
-#     context= {
-#         'name':'yogendra',
-#         'address':'mnr'
-#     }
-#     return render(request, 'departments/index_department.html', context)
+# funtions for employee section ends here
+
+# funtions for department section starts here
+
+def department_index(request):
+    department_list = Department.objects.all()
+    context ={"data":department_list}
+   
+    return render(request, 'departments/index_department.html', context)
+
+# function for department ends here
+
+
+# funtions for salary section starts here
+
+def salary_index(request):
+    return render(request, 'salaryrecords/index_salaryrecord.html')
+
+# function for salary section ends here  
