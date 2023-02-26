@@ -25,6 +25,16 @@ urlpatterns = [
 
     path('department/', views.department_index, name = 'dprt-index'),
 
+    path('department/show/<int:id>/', views.department_show, name = 'dprt-show'),
+
+    path('department/edit/<int:id>/', views.department_edit, name ='dprt-edit'),
+
+    path('department/delete/<int:id>/', views.department_delete, name ='dprt-delete'),
+
+    path('department/add/', views.department_add, name= 'dprt-add'),
+
+    path('department/update/', views.department_update, name='dprt-update'),
+
 
     # ''' urls for department section ends here '''
 

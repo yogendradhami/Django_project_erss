@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 from .forms import EmployeeCreateForm
+from .forms import DepartmentCreateForm
 from .models import Employee, User, Department
 from django.contrib import messages
 
@@ -94,6 +95,52 @@ def department_index(request):
     context ={"data":department_list}
    
     return render(request, 'departments/index_department.html', context)
+
+def department_add(request):
+    dprt_create_form= DepartmentCreateForm()
+    context = {"form":dprt_create_form}
+
+    if request.method == "POST":
+       dprt = Department()
+       dprt.department_name = request.POST.get('department_name')
+       dprt.short_name = request.POST.get('short_name')
+       dprt.save()
+
+       messages.success(request, 'Department added successfully')
+       
+       return redirect('dprt-index')
+    return render(request, 'departments/add_department.html', context)
+
+def department_edit(request,id):
+    data = Department.objects.get(id=id)
+    department = Department.objects.all()
+    user =User.objects.all()
+    context = {"data":data, "department":department, "user":user}
+    return render(request, 'departments/edit_department.html', context)
+
+def department_update(request):
+    if request.method == "POST":
+
+        dprt= Department.objects.get(id = request.POST.get('id'))
+        dprt.department_name = request.POST.get('department_name')
+        dprt.short_name = request.POST.get('short_name')
+        dprt.save()
+
+        messages.success(request, 'Department details updated successfully')
+
+        return redirect('dprt-index')
+
+def department_delete(request,id):
+    data = Department.objects.get(id=id)
+    data.delete()
+    messages.success(request, 'Department deleted successfully')
+
+    return redirect('dprt-index')
+
+def department_show(request, id):
+    data = Department.objects.get(id=id)
+    context = {"data":data}
+    return render(request, 'departments/show_department.html', context)
 
 # function for department ends here
 

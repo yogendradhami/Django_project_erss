@@ -1,26 +1,39 @@
 {% extends 'layouts/master.html' %}
 
+<!-- title section starts here -->
+
 {%  block title %}
     Employee - Details
 {% endblock %}
 
+<!-- title section ends here -->
+
+ <!-- custom css section starts here -->
+ {% block custom_css %}
+
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"/>
+ 
+ {% endblock %}
+
+ <!-- custom css section ends here -->
+
 {% block content %}
 <div class="container mt-5">
     <h1>This is employee detail page</h1>
-<a href="{% url 'emp-index' %}" class="btn btn-primary">BACK</a>
+<a href="{% url 'emp-index' %}" class="btn btn-primary"> <i class="fa-sharp fa-solid fa-backward"></i>BACK</a>
 <hr>
 <div class="card">
     <div class="card-header"><h3>{{ data.full_name }}</h3></div>
     <div class="ccard-body">
         <h6> {{ data.email }} </h6>
         <h6> {{ data.contact }} </h6>
-        <h6> {{ data.email}} </h6>
-        <h6> {{ data.dob}} </h6>
-        <h6> {{ data.join_date}} </h6>
-        <h6> {{ data.blood_group}} </h6>
-        <h6> {{ data.address}} </h6>
+        <h6> {{ data.email }} </h6>
+        <h6> {{ data.dob }} </h6>
+        <h6> {{ data.join_date }} </h6>
+        <h6> {{ data.blood_group }} </h6>
+        <h6> {{ data.address }} </h6>
         <h6> {{ data.user }} </h6>
-        <h6> {{ data.department}} </h6>
+        <h6> {{ data.department }} </h6>
     </div>
 </div>
 </div>

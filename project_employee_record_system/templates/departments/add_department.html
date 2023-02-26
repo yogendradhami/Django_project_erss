@@ -4,6 +4,21 @@
     Department - Add
 {% endblock%}
 
-{% block content%}
-    <h1>This is department add page</h1>
-{% endblock%}
+{% block content %}
+    <div class="container mt-5">
+        <h1>This is Department add page</h1>
+        <a href="{% url 'dprt-index' %}" class="btn btn-primary">BACK</a>
+        <div class="row">
+            <div class="div col-md-4"></div>
+            <div class="div col-md-4">
+                <form action="{% url 'dprt-add' %}" method="post">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+
+                    <input type="submit" class="btn btn-primary" value= "CREATE">
+                </form>
+            </div>
+            <div class="div col-md-4"></div> 
+        </div>
+    </div>
+{% endblock %}

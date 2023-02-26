@@ -5,7 +5,7 @@
 {% endblock %}
 
 {% block content %}
-<div class="container mt-5 mb-5">
+<div class="container mt-5">
     <h1>This is employee edit page</h1>
     <a href="{% url 'emp-index' %}" class="btn btn-primary">BACK</a>
     <hr>
@@ -14,7 +14,9 @@
         <div class="col-md-2"></div>
         <div class="col-md-8">
             <form action="{% url 'emp-update' %}" method="post">
+                
                 {% csrf_token %}
+
                 <input type="hidden" name="id" value="{{ data.id }}" />
                 <div class="form-group mb-2">
                     <label class="mb-2">Full Name</label>

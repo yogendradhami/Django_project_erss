@@ -1,11 +1,13 @@
 {% extends 'layouts/master.html' %}
 
 {% block title %}
-department - List
+    Department - List
 {% endblock %}
 
 {% block custom_css %}
+
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" />
+
 {% endblock %}
 
 {% block content %}
@@ -18,34 +20,30 @@ department - List
 <div class="container mt-5">
     <h1>This is the department list page.</h1>
 
-<hr>
-<a href="{% url 'emp-add' %}" class="btn btn-primary"><i class="fa-solid fa-plus"></i>Add</a>
+    <hr>
+    <a href="{% url 'dprt-add' %}" class="btn btn-primary"><i class="fa-solid fa-plus"></i>Add</a>
 
-<table class="table table-striped-columns table-hover">
-    <thead>
-        <tr>
-            <th>S.NO</th>
-            <th>Department Name</th>
-            <th>Short Name</th>
-            <th colspan="3">Action</th>
-        </tr>
-    </thead>
-    <tbody>
-        {% for val in data %}
-        <tr>
-            <td> {{ forloop.counter }} </td>
-            <td> {{ val.department_name }} </td>
-            <td> {{ val.short_name }} </td>
-            <td><a href="{% url 'emp-edit' val.id %}"><i class="fa-solid fa-pencil"></i></a></td>
-            <td><a href="{% url 'emp-show' val.id %}"><i class="fa-solid fa-eye"></i></a></td>
-            <td><a href="{% url 'emp-delete' val.id %}"><i class="fa-solid fa-trash"></i></a></td>
-        </tr>
-        {% endfor %}   
-    </tbody>
-
-
-    </div>
-<!-- <h1>Name: {{ name }} </h1>
-<h1>Address: {{ address }} </h1> -->
-
+    <table class="table table-striped-columns table-hover">
+        <thead>
+            <tr>
+                <th>S.NO</th>
+                <th>Department Name</th>
+                <th>Short Name</th>
+                <th colspan="3">Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for val in data %}
+            <tr>
+                <td> {{ forloop.counter }} </td>
+                <td> {{ val.department_name }} </td>
+                <td> {{ val.short_name }} </td>
+                <td><a href="{% url 'emp-edit' val.id %}"><i class="fa-solid fa-pencil"></i></a></td>
+                <td><a href="{% url 'emp-show' val.id %}"><i class="fa-solid fa-eye"></i></a></td>
+                <td><a href="{% url 'emp-delete' val.id %}"><i class="fa-solid fa-trash"></i></a></td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
 {% endblock %}

@@ -5,5 +5,30 @@
 {% endblock%}
 
 {% block content%}
-    <h1>This  is the department add page</h1>
+    <div class="container mt-5">
+        <h1>This  is the department add page</h1>
+        <a href="{% url 'dprt-index' %}" class="btn btn-primary">BACK</a>
+        <hr>
+        <div class="row">
+            <div class="col-md-2"></div>
+            <div class="col-md-8">
+                <form action="{% url 'dprt-update' %}" method="post">
+
+                    {% csrf_token %}
+
+                    <input type="hidden" name="id" value="{{ data.id }}"/>
+                    <div class="form_group mb-2">
+                        <label for="mb-2">Department name</label>
+                        <input type="text" class="form-control" name="department_name" value="{{ data.department_name }}">
+                    </div>
+                    <div class="form_group mb-2">
+                        <label for="mb-2">Short name</label>
+                        <input type="text" class="form-control" name="short_name" value="{{ data.short_name }}">
+                    </div>
+                    <input type="submit" class="btn btn-primary mt-2" value="UPDATE">
+                </form>
+            </div>
+            <div class="col-md-2"></div>
+        </div>
+    </div>
 {% endblock%}

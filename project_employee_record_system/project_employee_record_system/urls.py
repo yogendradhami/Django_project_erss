@@ -17,23 +17,33 @@ from django.contrib import admin
 from django.urls import path, include
 
 urlpatterns = [
+    # path url for admin starts here
+
     path('admin/', admin.site.urls),
+    
+    # path url for admin ends here
+
+    # path urls for employees starts here
+
     path('employee/', include('app_employeewebsite.urls')),
     path('', include('app_employeewebsite.urls')), 
     # incase if need to load via base url
+
+    # path ulrs for employees ends here
+
+    # path urls for department starts here
+
     path('department/', include('app_employeewebsite.urls')),
     path('', include('app_employeewebsite.urls')),
+
+    # path urls for department ends here
+
+    # path urls for  salary starts here
+
     path('salary/', include('app_employeewebsite.urls')),
     path('', include('app_employeewebsite.urls')),
+
+    # path ulrs for salary ends here
 ]
 
-# urlpatterns = [
-#     path('department/', include('app_employeewebsite.urls')),
-#     path('', include('app_employeewebsite.urls')),
 
-# ]
-
-# urlpatterns = [
-#     path('salary/', include('app_employeewebsite.urls')),
-#     path('', include('app_employeewebsite.urls')),
-# ]
