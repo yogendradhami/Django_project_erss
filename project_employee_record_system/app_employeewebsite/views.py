@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from .forms import EmployeeCreateForm
 from .forms import DepartmentCreateForm
 from .forms import SalaryCreateForm
-from .models import Employee, User, Department, EmployeeSalary
+from .models import Employee, User,Employee, Department, EmployeeSalary
 from django.contrib import messages
 
 # Create your views here.
@@ -43,6 +43,7 @@ def employee_add(request):
         messages.success(request, 'Employee added successfully')
 
         return redirect('emp-index')
+
     return render(request, 'employees/add_employee.html', context)
 
 def employee_edit(request, id):
@@ -153,6 +154,7 @@ def salary_index(request):
 
     salary_list = EmployeeSalary.objects.all()
     context = {"data":salary_list}
+
     return render(request, 'salaryrecords/index_salaryrecord.html', context)
 
 def salary_add(request):
@@ -162,12 +164,14 @@ def salary_add(request):
 
     if request.method == "POST":
         sal = EmployeeSalary()
+        employee = Employee.objects.get(id=request.POST.get('employee'))
         sal.salary_amount = request.POST.get('salary_amount')
         sal.bonus_amount = request.POST.get('bonus_amount')
         sal.allowance = request.POST.get('bonus_amount')
         sal.tds_in_percent = request.POST.get('tds_in_percent')
         sal.start_date = request.POST.get('start_date')
         sal.end_date = request.POST.get('end_date')
+        sal.employee= employee
         sal.save()
 
         messages.success(request, 'Salary added successfully')
@@ -177,7 +181,8 @@ def salary_add(request):
 
 def salary_edit(request, id):
     data = EmployeeSalary. objects.get(id=id)
-    context = {"data":data}
+    employee = Employee.objects.all()
+    context = {"data":data, "employee":employee}
 
     return render(request, 'salaryrecords/edit_salaryrecord.html',context)
 
@@ -196,6 +201,7 @@ def salary_delete(request, id):
 
 def salary_update(request):
     if request.method == "POST":
+        employee = Employee.objects.get(id=request.POST.get('employee'))
         sal= EmployeeSalary.objects.get(id= request.POST.get('id'))
         sal.salary_amount= request.POST.get('salary_amount')
         sal.bonus_amount = request.POST.get('bonus_amount')
@@ -203,6 +209,7 @@ def salary_update(request):
         sal.tds_in_percent = request.POST.get('tds_in_percent')
         sal.start_date = request.POST.get('start_date')
         sal.end_date = request.POST.get('end_date')
+        sal.employee=employee
         sal.save()
 
         messages.success(request, 'Salary details updated successfully')

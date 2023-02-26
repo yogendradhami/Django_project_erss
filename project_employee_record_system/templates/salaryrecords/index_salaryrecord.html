@@ -28,6 +28,7 @@
                     <th>Tds In Percent</th>
                     <th>Start Date</th>
                     <th>End Date</th>
+                    <th>employee</th>
                     <th colspan="3">Action</th>
                 </tr>
             </thead>
@@ -41,6 +42,7 @@
                     <td> {{ val.tds_in_percent }} </td>
                     <td> {{ val.start_date }} </td>
                     <td> {{ val.end_date }} </td>
+                    <td>{{ val.employee }} </td>
                     <td><a href="{% url 'sal-edit' val.id %}"><i class="fa-solid fa-pencil"></i></a></td>
                     <td><a href="{% url 'sal-show' val.id %}"><i class="fa-solid fa-eye"></i></a></td>
                     <td><a href="{% url 'sal-delete' val.id %}"><i class="fa-solid fa-trash"></i></a></td>
