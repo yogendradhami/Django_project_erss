@@ -44,6 +44,16 @@ urlpatterns = [
 
     path('salary/', views.salary_index, name='sal-index'),
 
+    path('salary/add/', views.salary_add, name= 'sal-add'),
+
+    path('salary/show/<int:id>/', views.salary_show, name= 'sal-show'),
+
+    path('salary/edit/<int:id>/', views.salary_edit, name='sal-edit'),
+
+    path('salary/delete/<int:id>/', views.salary_delete, name = 'sal-delete'),
+
+    path('salary/update/', views.salary_update, name = 'sal-update'),
+
     # ''' urls for salary section ends here '''
  
 ]

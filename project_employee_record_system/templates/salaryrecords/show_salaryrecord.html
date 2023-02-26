@@ -1,9 +1,29 @@
 {% extends 'layouts/master.html' %}
 
 {% block title %}
-    salaryrecord - Details
-{% endblock%}
+    Salaryrecord - Details
+{% endblock %}
+
+{% block custom_css %}
+
+{% endblock %}
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"/>
 
 {% block content %}
-    <h1>This is the salary  record details page</h1>
+    <div class="container mt-5">
+        <h1>This is the salary  record details page</h1>
+        <a href="{% url 'sal-index' %}" class="btn btn-primary"> <i class="fa-sharp fa-solid fa-backward"></i>BACK</a>
+        <hr>
+        <div class="card">
+            <div class="card-header"><h3>{{data.salary_amount }}</h3></div>
+            <div class="ccard-body">
+                <h6> {{ data.bonus_amount }} </h6>
+                <h6> {{ data.allowance }} </h6>
+                <h6> {{ data.tds_in_percent }} </h6>
+                <h6> {{ data.start_date }} </h6>
+                <h6> {{ data.end_date }} </h6>
+            </div>
+        </div>
+    </div>
 {% endblock %}

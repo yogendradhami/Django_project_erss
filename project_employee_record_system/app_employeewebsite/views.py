@@ -1,7 +1,8 @@
 from django.shortcuts import render, redirect
 from .forms import EmployeeCreateForm
 from .forms import DepartmentCreateForm
-from .models import Employee, User, Department
+from .forms import SalaryCreateForm
+from .models import Employee, User, Department, EmployeeSalary
 from django.contrib import messages
 
 # Create your views here.
@@ -148,6 +149,67 @@ def department_show(request, id):
 # funtions for salary section starts here
 
 def salary_index(request):
-    return render(request, 'salaryrecords/index_salaryrecord.html')
+    """ Return list of salary as context """
+
+    salary_list = EmployeeSalary.objects.all()
+    context = {"data":salary_list}
+    return render(request, 'salaryrecords/index_salaryrecord.html', context)
+
+def salary_add(request):
+
+    sal_create_form = SalaryCreateForm()
+    context = {"form": sal_create_form}
+
+    if request.method == "POST":
+        sal = EmployeeSalary()
+        sal.salary_amount = request.POST.get('salary_amount')
+        sal.bonus_amount = request.POST.get('bonus_amount')
+        sal.allowance = request.POST.get('bonus_amount')
+        sal.tds_in_percent = request.POST.get('tds_in_percent')
+        sal.start_date = request.POST.get('start_date')
+        sal.end_date = request.POST.get('end_date')
+        sal.save()
+
+        messages.success(request, 'Salary added successfully')
+        return redirect('sal-index')
+    
+    return render(request, 'salaryrecords/add_salaryrecord.html', context)
+
+def salary_edit(request, id):
+    data = EmployeeSalary. objects.get(id=id)
+    context = {"data":data}
+
+    return render(request, 'salaryrecords/edit_salaryrecord.html',context)
+
+def salary_show(request, id):
+    data = EmployeeSalary.objects.get(id=id)
+    context = {"data":data}
+    return render(request, 'salaryrecords/show_salaryrecord.html',context)
+
+def salary_delete(request, id):
+    data = EmployeeSalary.objects.get(id=id)
+    data.delete()
+
+    messages.success(request, 'Salary deleted successfully')
+
+    return redirect('sal-index')
+
+def salary_update(request):
+    if request.method == "POST":
+        sal= EmployeeSalary.objects.get(id= request.POST.get('id'))
+        sal.salary_amount= request.POST.get('salary_amount')
+        sal.bonus_amount = request.POST.get('bonus_amount')
+        sal.allowance = request.POST.get('allowance')
+        sal.tds_in_percent = request.POST.get('tds_in_percent')
+        sal.start_date = request.POST.get('start_date')
+        sal.end_date = request.POST.get('end_date')
+        sal.save()
+
+        messages.success(request, 'Salary details updated successfully')
+
+        return redirect('sal-index')
+
+    return render(request, 'salaryrecords/update_salaryrecord.html')
+
 
 # function for salary section ends here  

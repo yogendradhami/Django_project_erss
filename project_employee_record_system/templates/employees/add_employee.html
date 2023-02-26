@@ -5,16 +5,21 @@ Employee - Add
 {% endblock%}
 
 {% block content%}
+
 <div class="container mt-5">
+
+    <h1> This is the employee add page list</h1>
     <a href="{% url 'emp-index' %}" class="btn btn-primary">BACK</a>
+
     <div class="row">
+
         <div class="col-md-4"></div>
         <div class="col-md-4">
             <form action="{% url 'emp-add' %}" method="post">
                 {% csrf_token %}
                 {{ form.as_p }}
 
-                <input type="submit" class="btn btn-primary" value= "CREATE">
+                <input type="submit" class="btn btn-primary" value="CREATE">
             </form>
         </div>
         <div class="col-md-4"></div>

@@ -1,9 +1,29 @@
-{% extends 'layouts/master'.html'%}
+{% extends 'layouts/master.html'%}
 
 {% block title %}
-    salaryrecord - Add
+    Salaryrecord - Add
 {% endblock%}
 
 {% block content %}
-    <h1>This is the salary  record add page</h1>
-{% endblock%}
+
+    <div class="container mt-5">
+        <h1>This is the salary  record add page</h1>
+
+        <a href="{% url 'sal-index' %}" class="btn btn-primary">BACK</a>
+
+        <div class="row">
+            <div class="col-md-4"></div>
+            <div class="col-md-4">
+                <form action="{% url 'sal-add' %}" method="post">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+
+                    <input type="submit" class="btn btn-primary"  value="CREATE">
+                </form>
+            </div>
+            <div class="col-md-4"></div>
+        </div>
+
+
+    </div>
+{% endblock %}
