@@ -2,9 +2,11 @@ from django.shortcuts import render, redirect
 from django.views import View
 from django.contrib.auth.models import User
 from django.contrib import auth
+# from django.contrib.auth import login as authlogin
 from django.contrib import messages
 
 # Create your views here.
+
 class LoginView(View):
     def get(self, request):
         return render(request, 'authentication/login.html')
@@ -14,13 +16,13 @@ class LoginView(View):
         username  = request.POST.get('username')
         password = request.POST.get('password')
 
-        user = auth.authenticate(username,password)
+        user = auth.authenticate(request,username=username,password=password)
         if user:
-            messages.succes(request, 'Login successfully')
+            messages.success(request, 'Login successfully')
             return redirect('emp-index')
         else:
             messages.error(request,  'Invaid username or password!')
-            return  redirect('login')
+            return  redirect('user_login')
 
 class RegisterView(View):
     def get(self, request):

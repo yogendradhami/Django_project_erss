@@ -55,5 +55,7 @@ urlpatterns = [
     path('salary/update/', views.salary_update, name = 'sal-update'),
 
     # ''' urls for salary section ends here '''
+
+    
  
 ]

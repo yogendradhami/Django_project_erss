@@ -16,7 +16,7 @@
             {% include "partials/_message.html" %}
             <div class="card p-5">
                 <h3>Login with your account</h3>
-                <form action="{% url 'login'%}" method="post">
+                <form action="{% url 'user_login'%}" method="post">
                     {% csrf_token %}
 
                     <div class="form-group mb-3">
