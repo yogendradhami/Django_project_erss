@@ -1,3 +1,5 @@
+<!-- files to be included -->
+
 {% extends 'layouts/master.html'%}
 
 <!-- title section starts here -->
@@ -22,9 +24,10 @@
 <!-- body section starts here -->
 
 {% block content %}
-    <div class="cotainer mt-5">
+    <div class="container mt-5">
         <h1>This is the department detail page</h1>
-    <a href="{% url 'dprt-index' %}" class="btn btn-primary"><i class="fa-sharp fa-solid fa-backward"></i>BACK</a>
+        <hr>
+    <a href="{% url 'dprt-index' %}" class="btn btn-primary"> <h3> <i class="fa fa-arrow-left" aria-hidden="true"></i> </h3></a>
         <hr>
         <div class="card">
             <div class="card-header"><h3>{{ data.department_name }}</h3></div>

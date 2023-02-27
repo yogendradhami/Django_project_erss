@@ -42,6 +42,11 @@ urlpatterns = [
 
     path('salary/', include('app_employeewebsite.urls')),
     path('', include('app_employeewebsite.urls')),
+    
+    path('authentication/', include('authentication.urls')),
+   
+   
+
 
     # path ulrs for salary ends here
 ]

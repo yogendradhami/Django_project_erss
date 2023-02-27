@@ -201,7 +201,7 @@ def salary_delete(request, id):
 
 def salary_update(request):
     if request.method == "POST":
-        employee = Employee.objects.get(id=request.POST.get('employee'))
+        # employee = Employee.objects.get(id=request.POST.get('employee'))
         sal= EmployeeSalary.objects.get(id= request.POST.get('id'))
         sal.salary_amount= request.POST.get('salary_amount')
         sal.bonus_amount = request.POST.get('bonus_amount')
@@ -209,7 +209,7 @@ def salary_update(request):
         sal.tds_in_percent = request.POST.get('tds_in_percent')
         sal.start_date = request.POST.get('start_date')
         sal.end_date = request.POST.get('end_date')
-        sal.employee=employee
+        # sal.employee=employee
         sal.save()
 
         messages.success(request, 'Salary details updated successfully')

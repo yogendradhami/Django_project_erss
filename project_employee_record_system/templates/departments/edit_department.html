@@ -1,17 +1,30 @@
+<!-- files to be included here -->
+
 {% extends 'layouts/master.html' %}
 
+<!-- title section starts here
+ -->
 {% block title%}
     Department - Add
 {% endblock%}
 
+<!-- title section ends here -->
+
+<!-- body section starts here -->
+
 {% block content%}
     <div class="container mt-5">
+
+        <!-- heading section  -->
+
         <h1>This  is the department add page</h1>
         <a href="{% url 'dprt-index' %}" class="btn btn-primary">BACK</a>
         <hr>
         <div class="row">
             <div class="col-md-2"></div>
             <div class="col-md-8">
+
+                <!-- form section -->
                 <form action="{% url 'dprt-update' %}" method="post">
 
                     {% csrf_token %}
@@ -27,8 +40,13 @@
                     </div>
                     <input type="submit" class="btn btn-primary mt-2" value="UPDATE">
                 </form>
+                
+                <!-- from section -->
+                
             </div>
             <div class="col-md-2"></div>
         </div>
     </div>
 {% endblock%}
+
+<!-- body section ends here -->
