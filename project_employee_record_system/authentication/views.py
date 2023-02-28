@@ -4,8 +4,15 @@ from django.contrib.auth.models import User
 from django.contrib import auth
 # from django.contrib.auth import login as authlogin
 from django.contrib import messages
+from django.contrib.auth import login, logout
 
 # Create your views here.
+
+class LogoutView(View):
+    def get(self,request):
+        logout(request)
+        messages.success(request, "You're logged out!!")
+        return redirect('user_login')
 
 class LoginView(View):
     def get(self, request):
@@ -18,6 +25,7 @@ class LoginView(View):
 
         user = auth.authenticate(request,username=username,password=password)
         if user:
+            login(request, user)
             messages.success(request, 'Login successfully')
             return redirect('emp-index')
         else:
@@ -44,4 +52,4 @@ class RegisterView(View):
             data =User.objects.create_user(first_name = first_name, last_name = last_name, email=email, username=username,password=password)
 
             messages.success(request,'Accocunt  created successfully!')
-            return redirect('login')
+            return redirect('user_login')

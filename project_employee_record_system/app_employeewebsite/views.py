@@ -4,11 +4,12 @@ from .forms import DepartmentCreateForm
 from .forms import SalaryCreateForm
 from .models import Employee, User,Employee, Department, EmployeeSalary
 from django.contrib import messages
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 
 # functions for employee section starts here
-
+@login_required(login_url= 'user_login')
 def employee_index(request):
     """Returns list of employee as context"""
 
