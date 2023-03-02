@@ -29,28 +29,16 @@ urlpatterns = [
     path('', include('app_employeewebsite.urls')), 
     # incase if need to load via base url
 
-    # path ulrs for employees ends here
+     # path urls for employees ends here
 
-    # path urls for department starts here
+    # path ulrs for authentication starts here
 
-    path('department/', include('app_employeewebsite.urls')),
-    path('', include('app_employeewebsite.urls')),
-
-    # path urls for department ends here
-
-    # path urls for  salary starts here
-
-    path('salary/', include('app_employeewebsite.urls')),
-    path('', include('app_employeewebsite.urls')),
-    
     path('authentication/', include('authentication.urls')),
 
+    # path urls for authentication ends here
+
+
     
-   
-   
-
-
-    # path ulrs for salary ends here
 ]
 
 
