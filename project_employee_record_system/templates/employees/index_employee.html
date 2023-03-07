@@ -1,7 +1,7 @@
 {% extends 'layouts/master.html' %}
 
 {% block title %}
-    Employee - List
+Employee - List
 {% endblock %}
 
 {% block custom_css %}
@@ -20,42 +20,52 @@
     <h1>This is employee list page</h1>
     <hr>
     <a href="{% url 'emp-add' %}" class="btn btn-primary"><i class="fa-solid fa-plus"></i>Add</a>
+    <hr>
 
-    <table class="table table-striped-columns table-hover">
-        <thead>
-            <tr>
-                <th>S.NO</th>
-                <th>Name</th>
-                <th>Contact</th>
-                <th>Email</th>
-                <th>Dob</th>
-                <th>Join Date</th>
-                <th>Blood Group</th>
-                <th>Address</th>
-                <th>User</th>
-                <th>Department</th>
-                <th colspan="3">Action</th>
-            </tr>
-        </thead>
-        <tbody>
+    <div class="row">
+        <div class="col-8">
+
+            <table class="table table-striped-columns table-hover">
+                <thead>
+                    <tr>
+                        <th>S.NO</th>
+                        <th>Name</th>
+                        <th>Contact</th>
+                        <th>Join Date</th>
+                        <th>Department</th>
+                        <th colspan="3">Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for val in data %}
+                    <tr>
+                        <td>{{ forloop.counter }}</td>
+                        <td>{{ val.full_name }}</td>
+                        <td>{{ val.contact }}</td>
+                        <td> {{ val.join_date }} </td>
+                        <td>{{ val.department }}</td>
+                        <td><a href="{% url 'emp-edit' val.id %}"><i class="fa-solid fa-pencil"></i></a></td>
+                        <td><a href="{% url 'emp-show' val.id %}"><i class="fa-solid fa-eye"></i></a></td>
+                        <td><a href="{% url 'emp-delete' val.id %}"><i class="fa-solid fa-trash"></i></a></td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        <div class="col-4">
+            <h4>Filter by Name</h4>
+            <a href="{% url 'emp-index'%}" class="btn btn-sm btn-primary mb-2">clear</a>
             {% for val in data %}
-            <tr>
-                <td>{{ forloop.counter }}</td>
-                <td>{{ val.full_name }}</td>
-                <td>{{ val.contact }}</td>
-                <td>{{ val.email }}</td>
-                <td>{{ val.dob }}</td>
-                <td> {{ join_date }} </td>
-                <td> {{ val.blood_group }} </td>
-                <td> {{ val.address }} </td>
-                <td> {{ val.user }} </td>
-                <td>{{ val.department }}</td>
-                <td><a href="{% url 'emp-edit' val.id %}"><i class="fa-solid fa-pencil"></i></a></td>
-                <td><a href="{% url 'emp-show' val.id %}"><i class="fa-solid fa-eye"></i></a></td>
-                <td><a href="{% url 'emp-delete' val.id %}"><i class="fa-solid fa-trash"></i></a></td>
-            </tr>
+            <form action="{% url 'emp-index' %}" method="post">
+                {% csrf_token %}
+                <!-- <input type="hidden" name="id" value="{{val.id}}"> -->
+                <input type="hidden" name="full_name" value="{{ val.full_name }}">
+                <input type="submit" value="{{ val.full_name }}" class="btn btn-sm btn-primary mb-2">
+
+
+            </form>
             {% endfor %}
-        </tbody>
-    </table>
+        </div>
+    </div>
 </div>
 {% endblock %}
