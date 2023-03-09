@@ -37,8 +37,8 @@ urlpatterns = [
 
     # path urls for authentication ends here
 
-
-    
+    path('api-auth/', include('rest_framework.urls')),
+    path('api/v1/ers/', include('ers_api.urls')),
 ]
 
 
