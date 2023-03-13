@@ -8,6 +8,8 @@ class AdminEmployee(admin.ModelAdmin):
     list_display= ("full_name", "join_date", "email","contact")
     search_field = ("fill_name", "email")
     list_filter =  ("full_name", "email")
+
+    
 admin.site.register(Department)
 admin.site.register(Employee)
 admin.site.register(EmployeeSalary)
